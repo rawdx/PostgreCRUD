@@ -18,38 +18,32 @@ public class Main {
 		IConexionPostgre conn = new ConexionPostgre();
 		IConsultasPostgre consulta = new ConsultasPostgre();
 		IMenu menu = new Menu();
+		
 		ArrayList<LibroDto> listaLibros = new ArrayList<>();
 
 		try {
 			Connection conexion = conn.generarConexion();
-			consulta.actualizar(conexion, listaLibros);
 			int opcion;
 			do {
+				consulta.actualizar(conexion, listaLibros);
 				opcion = menu.mostrarMenu();
-				
 				switch(opcion) {
 				case 1:
+					consulta.seleccionar(conexion, listaLibros);
 					break;
 				case 2:
 					consulta.insertar(conexion, listaLibros);
 					break;
 				case 3:
-					consulta.actualizar(conexion, listaLibros);
+					consulta.modificar(conexion, listaLibros);
 					break;
 				case 4:
 					consulta.borrar(conexion);
-					break;
-					
+					break;			
 				}
 			}while(opcion != 5);
+			conexion.close();
 			
-//			if (conexion != null) {
-//				cons.consultaSelect(conexion, listaLibros);
-//				for (int i = 0; i < listaLibros.size(); i++) {
-//					System.out.println(listaLibros.get(i).toString());
-//				}
-//			}
-
 		} catch (Exception e) {
 			System.out.println("[ERROR-Main] Se ha producido un error al ejecutar la aplicación: " + e);
 		}

@@ -5,7 +5,7 @@ public class LibroDto {
 	private String titulo;
 	private String autor;
 	private String isbn;
-	
+
 	public LibroDto(long idLibro, String titulo, String autor, String isbn) {
 		super();
 		this.idLibro = idLibro;
@@ -13,7 +13,7 @@ public class LibroDto {
 		this.autor = autor;
 		this.isbn = isbn;
 	}
-	
+
 	public long getIdLibro() {
 		return idLibro;
 	}
@@ -45,10 +45,10 @@ public class LibroDto {
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "LibroDto [idLibro=" + idLibro + ", titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn + "]";
+		return "[idLibro=" + idLibro + ", titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn + "]";
 	}
 
 }
